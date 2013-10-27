@@ -70,13 +70,13 @@ function espresso_custom_template_calendar_table(){
 			$featured_image		= isset($event_meta['event_thumbnail_url']) ? $event_meta['event_thumbnail_url'] : FALSE;
 			
 			if($open_spots < 1 && $event->allow_overflow == 'N') {
-				$live_button = '<img class="buytix_button" src="'.ESPRESSO_CUSTOM_DISPLAY_PLUGINPATH.'/templates/calendar-table/closed.png" alt="Closed">';
+				$live_button = '<img class="buytix_button" src="'.WP_PLUGIN_URL. "/".plugin_basename(dirname(__FILE__)) .'/closed.png" alt="Closed">';
 			} else if ($open_spots < 1 && $event->allow_overflow == 'Y'){
-				$live_button = !empty($event->overflow_event_id) ? '<a href="'.espresso_reg_url($event->overflow_event_id).'"><img class="buytix_button" src="'.WP_PLUGIN_URL. "/".plugin_basename(dirname(__FILE__)) .'/waiting.png" alt="Join Waiting List"></a>' : '<img class="buytix_button" src="'.ESPRESSO_CUSTOM_DISPLAY_PLUGINPATH.'/templates/calendar-table/closed.png" alt="Closed">';
+				$live_button = !empty($event->overflow_event_id) ? '<a href="'.espresso_reg_url($event->overflow_event_id).'"><img class="buytix_button" src="'.WP_PLUGIN_URL. "/".plugin_basename(dirname(__FILE__)) .'/waiting.png" alt="Join Waiting List"></a>' : '<img class="buytix_button" src="'.WP_PLUGIN_URL. "/".plugin_basename(dirname(__FILE__)) .'/closed.png" alt="Closed">';
 			}
 				
-			if ( $event_status == 'NOT_ACTIVE' ) {
-				$live_button = '<img class="buytix_button" src="'.ESPRESSO_CUSTOM_DISPLAY_PLUGINPATH.'/templates/calendar-table/closed.png" alt="Closed">';
+			if ( isset($event_status) &&  $event_status == 'NOT_ACTIVE' ) {
+				$live_button = '<img class="buytix_button" src="'.WP_PLUGIN_URL. "/".plugin_basename(dirname(__FILE__)) .'/closed.png" alt="Closed">';
 			}
 				
 			//Build the table headers
