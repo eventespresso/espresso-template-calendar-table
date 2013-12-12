@@ -2,7 +2,7 @@
 /*
   Plugin Name: Event Espresso Template - Calendar Table
   Plugin URI: http://www.eventespresso.com
-  Description: This template creates a list of events, displayed in a table. It can dipsplay events by category and/or maximum number of days. [EVENT_CUSTOM_VIEW template_name="calendar-table" max_days="30" category_identifier="concerts"]
+  Description: This template creates a list of events, displayed in a table. It can display events by category and/or maximum number of days. [EVENT_CUSTOM_VIEW template_name="calendar-table" max_days="30" category_identifier="concerts"]
   Version: 1.0
   Author: Event Espresso
   Author URI: http://www.eventespresso.com
@@ -25,7 +25,7 @@
 
 //Requirements: CSS skills to customize styles, some renaming of the table columns, Espresso WP User Add-on (optional)
 // Parameter: show_featured=true/false. If set to true, the dates will be replaced with the featured images.
-// Parameter: change_title="something". If set the Band/Artist default title will be change to the strng provided.
+// Parameter: change_title="something". If set the Band/Artist default title will be change to the string provided.
 
 //The end of the action name (example: "action_hook_espresso_custom_template_") should match the name of the template. In this example, the last part the action name is "calendar-table",
 add_action('action_hook_espresso_custom_template_calendar-table','espresso_custom_template_calendar_table');
@@ -108,7 +108,7 @@ function espresso_custom_template_calendar_table(){
 				event_espresso_user_login();
 			}else{
 				?>
-		<tr class="">
+		<tr class="event-row" id="event-row-<?php echo $this_event_id; ?>">
 
 
 			<?php
@@ -119,9 +119,9 @@ function espresso_custom_template_calendar_table(){
 				</div></td>
 			<?php } else { ?>
 			<td class="td-date-holder"><div class="dater">
-					<p class="cal-day-title"><?php echo event_date_display($event->start_date, "l"); ?></p>
-					<p class="cal-day-num"><?php echo event_date_display($event->start_date, "j"); ?></p>
-					<p><span><?php echo event_date_display($event->start_date, "M"); ?></span></p>
+					<div class="cal-day-title"><?php echo event_date_display($event->start_date, "l"); ?></div>
+					<div class="cal-day-num"><?php echo event_date_display($event->start_date, "j"); ?></div>
+					<div><span><?php echo event_date_display($event->start_date, "M"); ?></span></div>
 				<?php } ?>
 				</div>
 			</td>
